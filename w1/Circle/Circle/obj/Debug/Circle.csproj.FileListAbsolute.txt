@@ -1,0 +1,7 @@
+C:\Users\Acer\Documents\KBTU\PP2Lab\w1\Circle\Circle\Circle\bin\Debug\Circle.exe.config
+C:\Users\Acer\Documents\KBTU\PP2Lab\w1\Circle\Circle\Circle\bin\Debug\Circle.exe
+C:\Users\Acer\Documents\KBTU\PP2Lab\w1\Circle\Circle\Circle\bin\Debug\Circle.pdb
+C:\Users\Acer\Documents\KBTU\PP2Lab\w1\Circle\Circle\Circle\obj\Debug\Circle.csprojResolveAssemblyReference.cache
+C:\Users\Acer\Documents\KBTU\PP2Lab\w1\Circle\Circle\Circle\obj\Debug\Circle.csproj.CoreCompileInputs.cache
+C:\Users\Acer\Documents\KBTU\PP2Lab\w1\Circle\Circle\Circle\obj\Debug\Circle.exe
+C:\Users\Acer\Documents\KBTU\PP2Lab\w1\Circle\Circle\Circle\obj\Debug\Circle.pdb

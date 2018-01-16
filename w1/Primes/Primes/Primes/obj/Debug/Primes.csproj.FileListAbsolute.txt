@@ -1,0 +1,7 @@
+C:\Users\Acer\Documents\KBTU\PP2Lab\w1\Prime\Primes\Primes\bin\Debug\Primes.exe.config
+C:\Users\Acer\Documents\KBTU\PP2Lab\w1\Prime\Primes\Primes\bin\Debug\Primes.exe
+C:\Users\Acer\Documents\KBTU\PP2Lab\w1\Prime\Primes\Primes\bin\Debug\Primes.pdb
+C:\Users\Acer\Documents\KBTU\PP2Lab\w1\Prime\Primes\Primes\obj\Debug\Primes.csprojResolveAssemblyReference.cache
+C:\Users\Acer\Documents\KBTU\PP2Lab\w1\Prime\Primes\Primes\obj\Debug\Primes.csproj.CoreCompileInputs.cache
+C:\Users\Acer\Documents\KBTU\PP2Lab\w1\Prime\Primes\Primes\obj\Debug\Primes.exe
+C:\Users\Acer\Documents\KBTU\PP2Lab\w1\Prime\Primes\Primes\obj\Debug\Primes.pdb

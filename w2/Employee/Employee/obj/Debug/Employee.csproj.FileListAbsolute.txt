@@ -1,0 +1,7 @@
+C:\Users\Acer\Documents\KBTU\PP2Lab\w2\Employee\Employee\bin\Debug\Employee.exe.config
+C:\Users\Acer\Documents\KBTU\PP2Lab\w2\Employee\Employee\bin\Debug\Employee.exe
+C:\Users\Acer\Documents\KBTU\PP2Lab\w2\Employee\Employee\bin\Debug\Employee.pdb
+C:\Users\Acer\Documents\KBTU\PP2Lab\w2\Employee\Employee\obj\Debug\Employee.csprojResolveAssemblyReference.cache
+C:\Users\Acer\Documents\KBTU\PP2Lab\w2\Employee\Employee\obj\Debug\Employee.csproj.CoreCompileInputs.cache
+C:\Users\Acer\Documents\KBTU\PP2Lab\w2\Employee\Employee\obj\Debug\Employee.exe
+C:\Users\Acer\Documents\KBTU\PP2Lab\w2\Employee\Employee\obj\Debug\Employee.pdb
