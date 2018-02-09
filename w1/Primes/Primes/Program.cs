@@ -12,7 +12,8 @@ namespace Primes
         {
             for (int i = 2; i*i <= n; i++)
             {
-                if (n % i == 0) return false;
+                if (n % i == 0)
+                    return false;
             }
             return true;
         }
@@ -21,9 +22,11 @@ namespace Primes
             for (int i = 0; i < args.Length; i++)
             {
                 int n = int.Parse(args[i]);
-                if (IsPrime(n)) Console.WriteLine(n + ' ');
+                if (IsPrime(n))
+                    Console.WriteLine(n + ' ');
             }
-            Console.ReadKey();
         }
+        Console.ReadKey();
+
     }
 }

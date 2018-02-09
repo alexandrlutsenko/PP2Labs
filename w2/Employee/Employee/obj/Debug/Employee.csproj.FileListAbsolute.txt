@@ -5,3 +5,10 @@ C:\Users\Acer\Documents\KBTU\PP2Lab\w2\Employee\Employee\obj\Debug\Employee.cspr
 C:\Users\Acer\Documents\KBTU\PP2Lab\w2\Employee\Employee\obj\Debug\Employee.csproj.CoreCompileInputs.cache
 C:\Users\Acer\Documents\KBTU\PP2Lab\w2\Employee\Employee\obj\Debug\Employee.exe
 C:\Users\Acer\Documents\KBTU\PP2Lab\w2\Employee\Employee\obj\Debug\Employee.pdb
+C:\Users\Асер\Desktop\KBTU\w2\Employee\Employee\bin\Debug\Employee.exe.config
+C:\Users\Асер\Desktop\KBTU\w2\Employee\Employee\bin\Debug\Employee.exe
+C:\Users\Асер\Desktop\KBTU\w2\Employee\Employee\bin\Debug\Employee.pdb
+C:\Users\Асер\Desktop\KBTU\w2\Employee\Employee\obj\Debug\Employee.csprojResolveAssemblyReference.cache
+C:\Users\Асер\Desktop\KBTU\w2\Employee\Employee\obj\Debug\Employee.csproj.CoreCompileInputs.cache
+C:\Users\Асер\Desktop\KBTU\w2\Employee\Employee\obj\Debug\Employee.exe
+C:\Users\Асер\Desktop\KBTU\w2\Employee\Employee\obj\Debug\Employee.pdb
