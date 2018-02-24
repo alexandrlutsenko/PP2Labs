@@ -29,7 +29,6 @@ namespace FarManager
         static void Main(string[] args)
         {
             Console.CursorVisible = false;
-            Console.BackgroundColor = ConsoleColor.Black;
             int pos = 0;
             DirectoryInfo dir = new DirectoryInfo(@"C:\Users\Асер\Desktop\KBTU\test");
             while (true)

@@ -26,7 +26,5 @@ namespace Primes
                     Console.WriteLine(n + ' ');
             }
         }
-        Console.ReadKey();
-
     }
 }

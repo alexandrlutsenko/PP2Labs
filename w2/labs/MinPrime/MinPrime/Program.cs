@@ -31,7 +31,7 @@ namespace MinPrime
             string s = sr.ReadLine();
             string[] st = s.Split(' ');
 
-            var list = new List<int>();
+            List<int> list = new List<int>();
             for (int i = 0; i < st.Length; i++)
             {
                 if (IsPrime(int.Parse(st[i])) == true)
@@ -39,6 +39,7 @@ namespace MinPrime
                     list.Add(int.Parse(st[i]));
                 }
             }
+
             int minp = list[0];
 
             for (int i = 0; i < list.Count; i++)

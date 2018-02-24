@@ -1,39 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Snake
 {
-    class Food
+    public class Food
     {
-        public Point location;
-        public char sign;
-        public ConsoleColor color;
+        public Random rnd = new Random();
+        public Point location = new Point(0, 0);
 
         public Food()
         {
-            color = ConsoleColor.Green;
-            sign = '@';
-            location = new Point(20, 10);
+            location.x = rnd.Next(2, Console.WindowWidth);
+            location.y = rnd.Next(2, Console.WindowHeight);
         }
 
         public void SetRandomPosition()
         {
-            int x = new Random().Next(0, 70);
-            int y = new Random().Next(0, 20);
-
-            // TODO: check for collision with wall and snake
-
-            location = new Point(x, y);
+            location.x = rnd.Next(2, Console.WindowWidth);
+            location.y = rnd.Next(2, Console.WindowHeight);
         }
 
         public void Draw()
         {
-            Console.ForegroundColor = color;
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.SetCursorPosition(location.x, location.y);
-            Console.Write(sign);
+            Console.Write("@");
+        }
+
+        public void Serialization()
+        {
+            XmlSerializer xs = new XmlSerializer(typeof(Food));
+            FileStream fs = new FileStream("savef.xml", FileMode.Create, FileAccess.ReadWrite);
+            xs.Serialize(fs, this);
+            fs.Close();
+        }
+
+        public Food Deserialization()
+        {
+            XmlSerializer xs = new XmlSerializer(typeof(Food));
+            FileStream fs = new FileStream("savef.xml", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            Food food = xs.Deserialize(fs) as Food;
+            fs.Close();
+            return food;
         }
     }
 }

@@ -4,41 +4,43 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Snake
 {
-    class Wall
+    public class Wall
     {
         public List<Point> body;
         public char sign;
         public ConsoleColor color;
 
-        public Wall()
+        public void ReadLevel(int level)
         {
-            sign = '#';
-            color = ConsoleColor.Magenta;
-            body = new List<Point>();
-            LoadLevel(1);
+            FileStream fs = new FileStream(@"C:\Users\Асер\Desktop\KBTU\Snake\Snake\bin\Debug\Levels\level" + level + ".txt", FileMode.Open, FileAccess.ReadWrite);
+            StreamReader sr = new StreamReader(fs);
+            int n = int.Parse(sr.ReadLine());
+            for (int i = 0; i < n; i++)
+            {
+                string s = sr.ReadLine();
+                for (int j = 0; j < s.Length; j++)
+                {
+                    if (s[j] == '#')
+                    {
+                        body.Add(new Point(j, i));
+                    }
+                }
+            }
+            sr.Close();
+            fs.Close();
         }
 
-        public void LoadLevel(int level)
+        public Wall() { }
+        public Wall(int level)
         {
-            string fileName = string.Format(@"Levels\level{0}.txt", level);
-            FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
-            StreamReader sr = new StreamReader(fs);
-
-            int row = 0;
-            string line = "";
-            while (row < 20)
-            {
-                line = sr.ReadLine();
-                for (int col = 0; col < line.Length; col++)
-                {
-                    if (line[col] == '#')
-                        body.Add(new Point(col, row));
-                }
-                row++;
-            }
+            body = new List<Point>();
+            sign = '#';
+            color = ConsoleColor.Cyan;
+            ReadLevel(level);
         }
 
         public void Draw()
@@ -49,6 +51,23 @@ namespace Snake
                 Console.SetCursorPosition(p.x, p.y);
                 Console.Write(sign);
             }
+        }
+
+        public void Serialization()
+        {
+            XmlSerializer xs = new XmlSerializer(typeof(Wall));
+            FileStream fs = new FileStream("savew.xml", FileMode.Create, FileAccess.ReadWrite);
+            xs.Serialize(fs, this);
+            fs.Close();
+        }
+
+        public Wall Deserialization()
+        {
+            XmlSerializer xs = new XmlSerializer(typeof(Wall));
+            FileStream fs = new FileStream("savew.xml", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            Wall wall = xs.Deserialize(fs) as Wall;
+            fs.Close();
+            return wall;
         }
     }
 }
