@@ -16,19 +16,22 @@ namespace Snake
 
         public void ReadLevel(int level)
         {
-            FileStream fs = new FileStream(@"C:\Users\Асер\Desktop\KBTU\Snake\Snake\bin\Debug\Levels\level" + level + ".txt", FileMode.Open, FileAccess.ReadWrite);
+            FileStream fs = new FileStream(@"C:\Users\Асер\Desktop\KBTU\Snake\Snake\bin\Debug\Levels\level" + level + ".txt", FileMode.Open, FileAccess.Read);
             StreamReader sr = new StreamReader(fs);
-            int n = int.Parse(sr.ReadLine());
-            for (int i = 0; i < n; i++)
+            
+            int row = 0;
+            string line = null;
+            while (row < 21)
             {
-                string s = sr.ReadLine();
-                for (int j = 0; j < s.Length; j++)
+                line = sr.ReadLine();
+                for (int col = 1; col < line.Length; col++)
                 {
-                    if (s[j] == '#')
+                    if (line[col] == '#')
                     {
-                        body.Add(new Point(j, i));
+                        body.Add(new Point(col, row));
                     }
                 }
+                row++;
             }
             sr.Close();
             fs.Close();

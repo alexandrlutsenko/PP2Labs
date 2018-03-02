@@ -27,9 +27,8 @@ namespace Snake
                 {
                     level++;
                     cnt = 0;
+                    wall = new Wall(level);
                 }
-                wall = new Wall(level);
-
                 if (direction == 1)
                 {
                     snake.Move(0, -1);
@@ -46,7 +45,7 @@ namespace Snake
                 {
                     snake.Move(-1, 0);
                 }
-                while (snake.ColwItself(food.location.x, food.location.y) || snake.ColwWall(food.location.x, food.location.y, wall))
+                while (food.OnSnake(food.location.x, food.location.y, snake) || food.OnWall(food.location.x, food.location.y, wall))
                 {
                     food.SetRandomPosition();
                 }
@@ -55,28 +54,41 @@ namespace Snake
                     Console.Clear();
                     Console.SetCursorPosition(30, 10);
                     Console.WriteLine("GAME OVER");
+                    Console.SetCursorPosition(30, 11);
+                    Console.WriteLine("press any key to start over");
                     Console.ReadKey();
+                    Console.Clear();
                     snake = new Snake();
                     level = 1;
                     score = 0;
                     speed = 100;
+                    wall = new Wall();
                 }
                 if (snake.Eat(food))
                 {
                     cnt++;
                     score++;
                 }
-                Console.Clear();
+                //Console.Clear();
                 snake.Draw();
                 food.Draw();
                 wall.Draw();
-                Console.SetCursorPosition(10, 0);
+                Console.SetCursorPosition(10, 25);
                 Console.WriteLine("level " + level);
+                Console.SetCursorPosition(10, 26);
                 Console.WriteLine("score " + score.ToString());
+                Console.SetCursorPosition(75, 4);
+                Console.WriteLine("use directional keys to move");
+                Console.SetCursorPosition(75, 6);
+                Console.WriteLine("press Q to save");
+                Console.SetCursorPosition(75, 8);
+                Console.WriteLine("press W to load");
+                Console.SetCursorPosition(75, 10);
+                Console.WriteLine("press ESC to exit");
 
                 if (score%4 == 0 && score != 0)
                 {
-                    speed = Math.Max(speed - 1, 1);
+                    speed = speed - 10;
                 }
                 Thread.Sleep(speed);
             }
@@ -93,19 +105,23 @@ namespace Snake
                 ConsoleKeyInfo btn = Console.ReadKey();
                 if(btn.Key == ConsoleKey.UpArrow)
                 {
-                    direction = 1;
+                    if(direction != 2)
+                        direction = 1;
                 }
                 if (btn.Key == ConsoleKey.DownArrow)
                 {
-                    direction = 2;
+                    if (direction!= 1)
+                        direction = 2;
                 }
                 if (btn.Key == ConsoleKey.RightArrow)
                 {
-                    direction = 3;
+                    if(direction != 4)
+                        direction = 3;
                 }
                 if (btn.Key == ConsoleKey.LeftArrow)
                 {
-                    direction = 4;
+                    if (direction != 3)
+                        direction = 4;
                 }
                 if (btn.Key == ConsoleKey.Escape)
                 {

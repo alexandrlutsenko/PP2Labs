@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace Snake
 {
-    class Snake
+     public class Snake
     {
         public List<Point> body;
         public char sign;
@@ -28,6 +28,10 @@ namespace Snake
 
         public void Move(int dx, int dy)
         {
+            Point fill = body[body.Count - 1];
+            Console.SetCursorPosition(fill.x, fill.y);
+            Console.Write(' ');
+
             for (int i = body.Count - 1; i > 0; i--)
             {
                 body[i].x = body[i - 1].x;
@@ -37,7 +41,9 @@ namespace Snake
             body[0].x = body[0].x + dx;
             body[0].y = body[0].y + dy;
 
-            if (body[0].x < 1)
+
+
+            /*if (body[0].x < 1)
             {
                 body[0].x = Console.WindowWidth - 1;
             }
@@ -52,7 +58,7 @@ namespace Snake
             if (body[0].y > Console.WindowHeight - 1)
             {
                 body[0].y = 1;
-            }
+            }*/
         }
 
         public void Serialization()
@@ -79,26 +85,6 @@ namespace Snake
                 body.Add(new Point(body[body.Count - 1].x, body[body.Count - 1].y));
                 food.SetRandomPosition();
                 return true;
-            }
-            return false;
-        }
-
-        public bool ColwItself(int col1, int col2)
-        {
-            for (int i = 1; i < body.Count; i++)
-            {
-                if (col1 == body[i].x && col2 == body[i].y)
-                    return true;
-            }
-            return false;
-        }
-
-        public bool ColwWall(int col1, int col2, Wall w)
-        {
-            foreach (Point p in w.body)
-            {
-                if (col1 == p.x && col2 == p.y)
-                    return true;
             }
             return false;
         }
