@@ -14,31 +14,35 @@ namespace _4
             int a = 1;
             bool dir = true;
 
-            while(dir == true)
+            while (true)
             {
-                F2(a);
-                if (a <= 3)
+                while (dir == true)
                 {
-                    a++;
+                    F2(a);
+                    if (a <= 3)
+                    {
+                        a++;
+                    }
+
+                    if (a > 3)
+                    {
+                        dir = false;
+                    }
                 }
 
-                if (a > 3)
+                while (dir == false)
                 {
-                    dir = false;
-                }
-            }
+                    F2(a);
+                    if (a >= 1)
+                    {
+                        a--;
+                    }
 
-            while (dir == false)
-            {
-                F2(a);
-                if (a >= 1)
-                {
-                    a--;
-                }
-
-                if (a < 1)
-                {
-                    dir = true;
+                    if (a < 1)
+                    {
+                        a = 1;
+                        dir = true;
+                    }
                 }
             }
         }
