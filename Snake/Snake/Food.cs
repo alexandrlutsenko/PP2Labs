@@ -16,13 +16,13 @@ namespace Snake
         public Food()
         {
             location.x = rnd.Next(2, 69);
-            location.y = rnd.Next(2, 19);
+            location.y = rnd.Next(2, 20);
         }
 
         public void SetRandomPosition()
         {
             location.x = rnd.Next(2, 69);
-            location.y = rnd.Next(2, 19);
+            location.y = rnd.Next(2, 20);
         }
 
         public bool OnSnake(int col1, int col2, Snake s)

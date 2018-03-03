@@ -11,13 +11,17 @@ namespace Snake
     {
         static Snake snake = new Snake();
         static Food food = new Food();
+        static int map = 1;
         static int level = 1;
-        static Wall wall = new Wall(level);
+        static Wall wall = new Wall(map);
         static int cnt = 0;
         static int score = 0;
-        static int direction = 1;
+        static int direction = 0;
         static bool gameover = false;
-        static int speed = 100;
+        static int speed = 150;
+        static int sp = 0;
+        //static int qm, ql, qcnt, qs, qd, qspeed, qsp;
+
 
         static void Game()
         {
@@ -26,9 +30,29 @@ namespace Snake
                 if (cnt == 4)
                 {
                     level++;
+                    map++;
+                    if(map > 4)
+                    {
+                        map = 1;
+                    }
                     cnt = 0;
-                    wall = new Wall(level);
+                    Console.Clear();
+                    wall = new Wall(map);
                 }
+
+                if (score%4 == 0 && score != 0)
+                {
+                    if (sp == 0)
+                    {
+                        speed = speed - 10;
+                        sp++;
+                    }
+                }
+                if (score%4 == 1)
+                {
+                    sp = 0;
+                }
+
                 if (direction == 1)
                 {
                     snake.Move(0, -1);
@@ -45,30 +69,50 @@ namespace Snake
                 {
                     snake.Move(-1, 0);
                 }
+
                 while (food.OnSnake(food.location.x, food.location.y, snake) || food.OnWall(food.location.x, food.location.y, wall))
                 {
                     food.SetRandomPosition();
                 }
+
+                if (snake.Eat(food))
+                {
+                    cnt++;
+                    score++;
+                }
+
                 if (snake.Collision(wall))
                 {
                     Console.Clear();
                     Console.SetCursorPosition(30, 10);
                     Console.WriteLine("GAME OVER");
                     Console.SetCursorPosition(30, 11);
-                    Console.WriteLine("press any key to start over");
-                    Console.ReadKey();
-                    Console.Clear();
-                    snake = new Snake();
-                    level = 1;
-                    score = 0;
-                    speed = 100;
-                    wall = new Wall();
+                    Console.WriteLine("press SPACE to start over");
+                    Console.SetCursorPosition(30, 12);
+                    Console.WriteLine("press ESC to exit");
+                    Console.SetCursorPosition(30, 13);
+                    Console.WriteLine("press them twice, 'cause i have no idea how to fix that");
+                    ConsoleKeyInfo k = Console.ReadKey();
+                    if (k.Key == ConsoleKey.Escape)
+                    {
+                        gameover = true;
+                        break;
+                    }
+                    if (k.Key == ConsoleKey.Spacebar)
+                    {
+                        Console.Clear();
+                        snake = new Snake();
+                        direction = 0;
+                        cnt = 0;
+                        map = 1;
+                        level = 1;
+                        score = 0;
+                        speed = 150;
+                        sp = 0;
+                        wall = new Wall(map);
+                    }
                 }
-                if (snake.Eat(food))
-                {
-                    cnt++;
-                    score++;
-                }
+                
                 //Console.Clear();
                 snake.Draw();
                 food.Draw();
@@ -78,18 +122,14 @@ namespace Snake
                 Console.SetCursorPosition(10, 26);
                 Console.WriteLine("score " + score.ToString());
                 Console.SetCursorPosition(75, 4);
-                Console.WriteLine("use directional keys to move");
+                Console.WriteLine("use DIRECTIONAL KEYS to move");
                 Console.SetCursorPosition(75, 6);
                 Console.WriteLine("press Q to save");
                 Console.SetCursorPosition(75, 8);
-                Console.WriteLine("press W to load");
+                Console.WriteLine("press W to load (works wierdly)");
                 Console.SetCursorPosition(75, 10);
                 Console.WriteLine("press ESC to exit");
 
-                if (score%4 == 0 && score != 0)
-                {
-                    speed = speed - 10;
-                }
                 Thread.Sleep(speed);
             }
         }
@@ -120,24 +160,42 @@ namespace Snake
                 }
                 if (btn.Key == ConsoleKey.LeftArrow)
                 {
-                    if (direction != 3)
+                    if (direction != 3 && direction != 0)
                         direction = 4;
                 }
                 if (btn.Key == ConsoleKey.Escape)
                 {
                     gameover = true;
                 }
+
                 if (btn.Key == ConsoleKey.Q)
                 {
                     snake.Serialization();
                     food.Serialization();
                     wall.Serialization();
+                   /* qm = map;
+                    ql = level;
+                    qcnt = cnt;
+                    qs = score;
+                    qd = direction;
+                    qspeed = speed;
+                    qsp = sp;*/
                 }
                 if (btn.Key == ConsoleKey.W)
                 {
-                    snake.Deserialization();
-                    food.Deserialization();
-                    wall.Deserialization();
+                    snake = snake.Deserialization();
+                    food = food.Deserialization();
+                    wall = wall.Deserialization();
+
+                    Console.Clear();
+
+                    /*map = qm;
+                    level = ql;
+                    cnt = qcnt;
+                    score = qs;
+                    direction = qd;
+                    speed = qspeed;
+                    sp = qsp;*/
                 }
             }
         }

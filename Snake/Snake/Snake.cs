@@ -65,8 +65,18 @@ namespace Snake
         {
             XmlSerializer xs = new XmlSerializer(typeof(Snake));
             FileStream fs = new FileStream("save.xml", FileMode.Create, FileAccess.ReadWrite);
-            xs.Serialize(fs, this);
-            fs.Close();
+            try
+            {
+                xs.Serialize(fs, this);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                fs.Close();
+            }
         }
 
         public Snake Deserialization()
