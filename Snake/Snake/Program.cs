@@ -120,7 +120,7 @@ namespace Snake
                 Console.SetCursorPosition(10, 25);
                 Console.WriteLine("level " + level);
                 Console.SetCursorPosition(10, 26);
-                Console.WriteLine("score " + score.ToString());
+                Console.WriteLine("score " + score);
                 Console.SetCursorPosition(75, 4);
                 Console.WriteLine("use DIRECTIONAL KEYS to move");
                 Console.SetCursorPosition(75, 6);

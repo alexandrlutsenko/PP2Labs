@@ -9,7 +9,7 @@ namespace FarManager
 {
     class Program
     {
-        static void showFolderContent(DirectoryInfo cur, int pos)
+        static void ShowFolderContent(DirectoryInfo cur, int pos)
         {
             FileSystemInfo[] data = cur.GetFileSystemInfos();
             for (int i = 0; i < data.Length; i++)
@@ -34,7 +34,7 @@ namespace FarManager
             while (true)
             {
                 Console.Clear();
-                showFolderContent(dir, pos);
+                ShowFolderContent(dir, pos);
                 ConsoleKeyInfo btn = Console.ReadKey();
                 switch (btn.Key)
                 {
@@ -70,7 +70,7 @@ namespace FarManager
                             }
                             while (ck.Key != ConsoleKey.Backspace);
                             Console.Clear();
-                            showFolderContent(dir, pos);
+                            ShowFolderContent(dir, pos);
                             sr.Close();
                             fs.Close();
                         }
